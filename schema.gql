@@ -1,0 +1,66 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  email: String!
+  password: String!
+  username: String
+  phone: String
+}
+
+type UserPaginationResponse {
+  data: [User!]!
+  total: Float!
+  currentPage: Float!
+  itemsPerPage: Float!
+}
+
+type LoginResponse {
+  accessToken: String
+  refreshToken: String
+}
+
+type Query {
+  users(filter: UserFilter!): UserPaginationResponse!
+  user(id: Float!): User!
+}
+
+input UserFilter {
+  search: String
+  itemsPerPage: Int
+  page: Int
+}
+
+type Mutation {
+  createUser(userData: CreateUserDto!): User!
+  update(id: Float!, dataUpdate: UpdateUserDto!): User!
+  delete(id: Float!): Boolean!
+  register(userData: RegisterDto!): User!
+  login(userData: LoginDto!): LoginResponse!
+}
+
+input CreateUserDto {
+  email: String!
+  password: String!
+  username: String
+  phone: String
+}
+
+input UpdateUserDto {
+  username: String
+  phone: String
+}
+
+input RegisterDto {
+  email: String!
+  password: String!
+  username: String
+  phone: String
+}
+
+input LoginDto {
+  email: String!
+  password: String!
+}
